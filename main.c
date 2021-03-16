@@ -1,63 +1,21 @@
 #include<stdio.h>
-#include<string.h>
-
-
-
-void no(){
-  printf("NO\n");
-}
-void yes(){
-  printf("YES\n");
-}
 
 int main(){
 
-  int n,i,j,k;
+  int n;
   scanf("%d",&n);
+  while(n--){
+    long long int x,y,value=1;
+    scanf("%lld%lld",&x,&y);
 
-  for(i=0;i<n;i++){
-        char p[100],h[100],temp[100];
-    scanf("%s %s",p,h);
-    int  h_lenght = strlen(h);
-     int p_lenght = strlen(p);
 
-     if(p_lenght>h_lenght)no();
+    if(x==y || (x==2&&y==3) ||(x==3 && y==2) || y==1)value=1;
+    else if(x== 1 || x==3 || x==2)value=0;
 
-    else{
-            int stop =p_lenght,start=0,value=0;
-        while(1){
-             strcpy(temp,h);
-             int mark =0;
-            for(j =0;j<p_lenght;j++){
-                    value = 0;
-                for(k= start;k<stop;k++){
-                    if(p[j]==temp[k]){
-                        temp[k]='A';
-                        value =0;
-                        break;
-                    }
-                    else{
-                        value = -1;
-                    }
-                }
-               if(value == -1){
-                    start++;
-                    stop++;
-                   break;
-               }
-               else mark++;
-            }
-            if(mark==p_lenght){
-                yes();
-                break;
-            }
-            if(stop>h_lenght){
-                no();
-                break;
-            }
-        }
-     }
+    if(value==1)printf("YES\n");
+    else printf("NO\n");
 
   }
+
 
 return 0;}
